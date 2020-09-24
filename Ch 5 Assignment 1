@@ -14,7 +14,7 @@
                dataset.push(i);
             }
             //you can uncomment the line below to see this data printed out to your javascript console
-            console.log(dataset)
+            //console.log(dataset)
             
 			
             //YOUR ASSIGNMENT STARTS HERE: now you will make a function to change the color of the text
@@ -45,11 +45,11 @@
                     //step 4: refresh your page and check if the results are what you expected
                     
                     
-                        if(i/5, i/3){return "green"
+                        if(d / 5 && d / 3){return "green"
                             //if the first is true, then this happens and nothing below this will happen
-                        }else if(i/3){return "blue"
+                        }else if(d / 3){return "blue"
                             //if the second condition is true, then this happens and nothing below this will happen
-                        }else if(i/5){return "red"
+                        }else if(d / 5){return "red"
                             //if the third condition is true, then this happens and nothing below this will happen
                         }else{return "black"
                             //if non of the above conditions are true, then this happens
@@ -58,7 +58,6 @@
                     
                                         
 				});
-			
 		</script>
 	</body>
 </html>
