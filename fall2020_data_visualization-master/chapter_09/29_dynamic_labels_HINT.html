@@ -9,16 +9,15 @@
 		</style>
 	</head>
 	<body>
-	
+
 		<p id="add">Add a new data value</p>
 		<p id="remove">Remove a data value</p>
-			
+
 		<script type="text/javascript">
 
 			//Width and height
 			var w = 600;
 			var h = 250;
-			
 			var dataset = [ { key: 0, value: 5 },		//dataset is now an array of objects.
 							{ key: 1, value: 10 },		//Each object has a 'key' and a 'value'.
 							{ key: 2, value: 13 },
@@ -39,27 +38,26 @@
 							{ key: 17, value: 18 },
 							{ key: 18, value: 23 },
 							{ key: 19, value: 25 } ];
-			
+
 			var xScale = d3.scaleBand()
 							.domain(d3.range(dataset.length))
 							.rangeRound([0, w])
-							.paddingInner(0.05);
-			
+					.paddingInner(0.05);
+
 			var yScale = d3.scaleLinear()
 							.domain([0, d3.max(dataset, function(d) { return d.value; })])
 							.range([0, h]);
-			
+
 			//Define key function, to be used when binding data
 			var key = function(d) {
 				return d.key;
 			};
-			
+
 			//Create SVG element
 			var svg = d3.select("body")
 						.append("svg")
 						.attr("width", w)
 						.attr("height", h);
-
 			//Create bars
 			svg.selectAll("rect")
 			   .data(dataset, key)
@@ -79,6 +77,12 @@
 					return "rgb(0, 0, " + (d.value * 10) + ")";
 			   });
 
+			
+			
+			
+			
+			
+	
 			//Create labels
 			svg.selectAll("text")
 			   .data(dataset, key)
@@ -98,16 +102,13 @@
 			   .attr("font-size", "11px")
 			   .attr("fill", "white");
 
-
-
-
-			//On click, update with new data			
+			//On click, update with new data
 			d3.selectAll("p")
 				.on("click", function() {
 
 					//See which p was clicked
 					var paragraphID = d3.select(this).attr("id");
-					
+
 					//Decide what to do next
 					if (paragraphID == "add") {
 						//Add a data value
@@ -123,7 +124,7 @@
 						//Remove a value
 						dataset.shift();	//Remove one value from dataset
 					}
-					
+
 					//Update scale domains
 					xScale.domain(d3.range(dataset.length));
 					yScale.domain([0, d3.max(dataset, function(d) { return d.value; })]);
@@ -131,7 +132,6 @@
 					//Select…
 					var bars = svg.selectAll("rect")
 						.data(dataset, key);
-					
 					//Enter…
 					bars.enter()
 						.append("rect")
@@ -170,7 +170,7 @@
 
 
 					//Update all labels
-	
+
 					//Select…
 					var labels = svg.selectAll("text")
 						.data(dataset, key);
@@ -181,7 +181,7 @@
   						.duration(500)
   						.attr("x", -xScale.bandwidth())
   						.remove();
-					
+
 					//Enter…
 					labels.enter()
 						.append("text")
@@ -192,7 +192,7 @@
 						.attr("x", w)
 						.attr("y", function(d) {
 							return h - yScale(d.value) + 14;
-						})						
+						})
 					   .attr("font-family", "sans-serif")
 					   .attr("font-size", "11px")
 					   .attr("fill", "white")
@@ -205,7 +205,7 @@
 
 				});
 
-			
+
 		</script>
 	</body>
 </html>
